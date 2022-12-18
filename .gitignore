@@ -1,0 +1,10 @@
+work/
+Results/
+.nextflow*
+tbd
+nextflow
+./nextflow
+*fna
+*.fa
+*.gff
+*.gff3
