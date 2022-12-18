@@ -2,7 +2,7 @@ process DOWNLOAD_NCBI {
     label 'download'
     tag "$sample_id via $accension_id"
     container = 'chriswyatt/ncbi_download:v14.6.1'
-    //errorStrategy = 'ignore'
+    errorStrategy = 'ignore'
          
     input:
         tuple val(sample_id), val(accension_id)

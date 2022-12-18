@@ -14,7 +14,7 @@
  
 params.outdir = "Results"
 params.input = "Example.csv"
-params.cpu=6
+//params.cpu=6
 
 
 log.info """\

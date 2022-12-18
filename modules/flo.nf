@@ -1,5 +1,5 @@
 process FLO {
-    label 'download'
+    label 'flo'
     tag "$sample_id1 vs $sample_id2"
     container = 'chriswyatt/flo'
              
@@ -15,7 +15,7 @@ process FLO {
     /flo/gff_longest_transcripts.rb $gff1 > ${gff1}_longest_transcripts.gff
     /flo/gff_longest_transcripts.rb $gff2 > ${gff2}_longest_transcripts.gff
 
-    fix_template.pl $fasta1 $fasta2 ${gff1}_longest_transcripts.gff $params.cpu
+    fix_template.pl $fasta1 $fasta2 ${gff1}_longest_transcripts.gff $task.cpus
 
     rake -f /flo/Rakefile
 
