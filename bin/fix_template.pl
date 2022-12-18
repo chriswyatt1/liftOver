@@ -24,9 +24,9 @@ print $out "# Location of binaries expected by flo.
 # are created by `scripts/install.sh`.Comment out or edit the paths based
 # on how you installed UCSC-Kent toolkit, GNU Parallel and genometools.
 :add_to_path:
-  - 'ext/kent/bin'
-  - 'ext/parallel-20150722/src'
-  - 'ext/genometools-1.5.6/bin'
+  - '/ext/kent/bin'
+  - '/ext/parallel-20150722/src'
+  - '/ext/genometools-1.5.6/bin'
 
 # Location of source and target assemblies.
 #

@@ -1,7 +1,7 @@
 process FLO {
     label 'download'
     tag "$sample_id1 vs $sample_id2"
-    container chriswyatt/flo
+    container = 'chriswyatt/flo'
              
     input:
         tuple val(sample_id1), path(fasta1), path(gff1), val(sample_id2), path(fasta2), path(gff2)

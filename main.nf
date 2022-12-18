@@ -13,7 +13,7 @@
  */
  
 params.outdir = "Results"
-params.input = "Example.tsv"
+params.input = "Example.csv"
 params.cpu=6
 
 
@@ -33,32 +33,20 @@ include { FLO } from './modules/flo.nf'
 Channel
     .fromPath(params.input)
     .splitCsv()
-    .set { in_file }
-
-Channel
-    .fromPath(params.input)
-    .splitCsv()
-    .collect()
-    .set { in_file_config }
-
-
-Channel
-    .fromPath(params.input)
-    .splitCsv()
     .branch { 
         ncbi: it.size() == 2 
         local: it.size() == 3
     }
     .set { input_type }
 
-    
-
 
 workflow {
 
     DOWNLOAD_NCBI ( input_type.ncbi )
 
-    FLO ( DOWNLOAD_NCBI.out.genome.mix(input_type.local) )
+    my_ch = DOWNLOAD_NCBI.out.genome.mix(input_type.local)
+
+    FLO ( my_ch.combine(my_ch).filter{ it[0] != it[3] } )
     
 }
 

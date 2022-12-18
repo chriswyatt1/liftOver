@@ -1,8 +1,8 @@
 process DOWNLOAD_NCBI {
     label 'download'
     tag "$sample_id via $accension_id"
-    container = 'chriswyatt/ncbi_download'
-    errorStrategy = 'ignore'
+    container = 'chriswyatt/ncbi_download:v14.6.1'
+    //errorStrategy = 'ignore'
          
     input:
         tuple val(sample_id), val(accension_id)
@@ -13,7 +13,7 @@ process DOWNLOAD_NCBI {
     script:
     """
     #Get a genome and GFF assembly from NCBI using their datasets scripts
-    datasets download genome accession ${accension_id}
+    datasets download genome accession ${accension_id} --include genome,gff3
     unzip ncbi_dataset.zip 
     
     if ls ncbi_dataset/data/${accension_id}/chr*.fna 1> /dev/null 2>&1; then
