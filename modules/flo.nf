@@ -15,7 +15,7 @@ process FLO {
     /flo/gff_longest_transcripts.rb $gff1 > ${gff1}_longest_transcripts.gff
     /flo/gff_longest_transcripts.rb $gff2 > ${gff2}_longest_transcripts.gff
 
-    cp /flo/opts_example.yaml flo_opts.yaml
+    fix_template.pl $fasta1 $fasta2 ${gff1}_longest_transcripts.gff $params.cpu
 
     rake -f /flo/Rakefile
 

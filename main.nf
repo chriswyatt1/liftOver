@@ -13,7 +13,8 @@
  */
  
 params.outdir = "Results"
-params.input = "data/Example.csv"
+params.input = "Example.tsv"
+params.cpu=6
 
 
 log.info """\
@@ -26,6 +27,7 @@ log.info """\
 // Include modules
 //================================================================================
 
+include { DOWNLOAD_NCBI } from './modules/download_ncbi.nf'
 include { FLO } from './modules/flo.nf'
 
 Channel
